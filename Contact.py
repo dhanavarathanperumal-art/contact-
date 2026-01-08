@@ -34,6 +34,14 @@ st.markdown("""
         margin: 30px 0;
         border: 3px dashed #ff9800;
     }
+    .website-box {
+        background-color: #e8f5e9;
+        padding: 25px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 30px 0;
+        border: 3px solid #4CAF50;
+    }
     .success-box {
         background-color: #e8f5e9;
         padding: 25px;
@@ -93,6 +101,22 @@ st.markdown("""
         transform: scale(1.05);
         box-shadow: 0 8px 20px rgba(255, 65, 108, 0.4);
     }
+    .website-button {
+        background: linear-gradient(135deg, #2196F3 0%, #0d47a1 100%);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin: 10px;
+    }
+    .website-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
+    }
     .construction-icon {
         font-size: 2.5rem;
         margin-bottom: 15px;
@@ -107,20 +131,24 @@ st.markdown("""
         margin-bottom: 15px;
         color: #f44336;
     }
-    .info-box {
-        background-color: #e3f2fd;
-        padding: 20px;
-        border-radius: 10px;
-        margin: 15px 0;
-        border-left: 5px solid #2196F3;
+    .website-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: #2196F3;
     }
 </style>
 """, unsafe_allow_html=True)
 
-# Your information - UPDATED WITH YOUR DETAILS
+# Your information
 YOUR_NAME = "Dhanavarathan P (Dhana)"
 YOUR_EMAIL = "dhanavarathanperumal@gmail.com"
 WEBSITE_NAME = "Rag Chat"
+WEBSITE_LINK = "https://offline1rag.streamlit.app"  # Your website link
+
+# Function to open the website
+def open_website():
+    webbrowser.open(WEBSITE_LINK)
+    st.success(f"Opening {WEBSITE_NAME}...")
 
 # Function to open email client for successful app working
 def report_app_working():
@@ -154,13 +182,8 @@ Best regards,
 [Your Name]
 [Your Contact Information]"""
     
-    # Create mailto link
     mailto_link = f"mailto:{YOUR_EMAIL}?subject={subject}&body={body}"
-    
-    # Open the default email client
     webbrowser.open(mailto_link)
-    
-    # Show success message
     st.success(f"App working report template opened! Please confirm and send to {YOUR_EMAIL}")
 
 # Function to open email client for issues
@@ -215,35 +238,90 @@ Best regards,
 [Your Name]
 [Your Contact Information]"""
     
-    # Create mailto link
     mailto_link = f"mailto:{YOUR_EMAIL}?subject={subject}&body={body}"
-    
-    # Open the default email client
     webbrowser.open(mailto_link)
-    
-    # Show success message
     st.success(f"Issue report template opened! Please fill in the details and send to {YOUR_EMAIL}")
 
 # Welcome Section
 st.markdown('<h1 class="main-header">👋 Welcome to My Portfolio!</h1>', unsafe_allow_html=True)
 st.markdown(f'<p style="text-align: center; font-size: 1.5rem;">Hello! I\'m <span class="name-highlight">{YOUR_NAME}</span></p>', unsafe_allow_html=True)
 
-# Divider
-st.divider()
-
-# Important Information Box
+# Important Information Section
 st.markdown("""
-<div class="info-box">
-<h3>📢 IMPORTANT INFORMATION</h3>
-<p><strong>Note:</strong> Even if the app works correctly, please send an email to identify that it's working properly. This helps in tracking and verification.</p>
-<p><strong>Email Purpose:</strong></p>
-<ul>
-<li>✅ Confirm the app is working (Send success report)</li>
-<li>⚠️ Report any issues or bugs</li>
-<li>💡 Provide feedback or suggestions</li>
-</ul>
+<div style="background-color: #f8f9fa; padding: 25px; border-radius: 15px; margin: 20px 0; border: 2px solid #FF9800;">
+    <h2 style="color: #FF9800; text-align: center; margin-bottom: 20px;">📢 IMPORTANT INFORMATION</h2>
+    
+    <div style="background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+        <p style="font-size: 1.1rem; color: #333; margin-bottom: 20px;">
+            <strong style="color: #f44336;">⚠️ Note:</strong> Even if the app works correctly, please send an email to identify that it's working properly. This helps in tracking and verification.
+        </p>
+        
+        <h3 style="color: #1E3A8A; margin-bottom: 15px;">📧 Email Purpose:</h3>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- Option 1 - Success -->
+            <div style="display: flex; align-items: flex-start; padding: 15px; background-color: #f1f8e9; border-radius: 8px; border: 2px solid #4CAF50;">
+                <div style="min-width: 25px; margin-right: 15px;">
+                    <div style="width: 25px; height: 25px; background-color: #4CAF50; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">✓</div>
+                </div>
+                <div>
+                    <h4 style="margin: 0; color: #2E7D32;">Confirm the app is working</h4>
+                    <p style="margin: 5px 0 0 0; color: #666; font-size: 0.95rem;">Send success report when app functions correctly</p>
+                    <span style="display: inline-block; background-color: #4CAF50; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; margin-top: 8px;">RECOMMENDED</span>
+                </div>
+            </div>
+            
+            <!-- Option 2 - Issues -->
+            <div style="display: flex; align-items: flex-start; padding: 15px; background-color: #ffebee; border-radius: 8px; border: 2px solid #f44336;">
+                <div style="min-width: 25px; margin-right: 15px;">
+                    <div style="width: 25px; height: 25px; background-color: #f44336; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">!</div>
+                </div>
+                <div>
+                    <h4 style="margin: 0; color: #c62828;">Report any issues or bugs</h4>
+                    <p style="margin: 5px 0 0 0; color: #666; font-size: 0.95rem;">Report problems encountered while using the app</p>
+                    <span style="display: inline-block; background-color: #f44336; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; margin-top: 8px;">IMPORTANT</span>
+                </div>
+            </div>
+            
+            <!-- Option 3 - Feedback -->
+            <div style="display: flex; align-items: flex-start; padding: 15px; background-color: #e3f2fd; border-radius: 8px; border: 2px solid #2196F3;">
+                <div style="min-width: 25px; margin-right: 15px;">
+                    <div style="width: 25px; height: 25px; background-color: #2196F3; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">💡</div>
+                </div>
+                <div>
+                    <h4 style="margin: 0; color: #1565c0;">Provide feedback or suggestions</h4>
+                    <p style="margin: 5px 0 0 0; color: #666; font-size: 0.95rem;">Share ideas for improvement or new features</p>
+                    <span style="display: inline-block; background-color: #2196F3; color: white; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; margin-top: 8px;">WELCOME</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 """, unsafe_allow_html=True)
+
+# Website Link Section
+st.markdown("---")
+st.markdown('<h2 style="text-align: center;">🌐 My Application</h2>', unsafe_allow_html=True)
+
+with st.container():
+    st.markdown('<div class="website-box">', unsafe_allow_html=True)
+    st.markdown('<div class="website-icon">🌐</div>', unsafe_allow_html=True)
+    st.markdown(f'<h3 style="text-align: center; color: #1565c0;">{WEBSITE_NAME}</h3>', unsafe_allow_html=True)
+    
+    # Display website URL
+    st.markdown(f'<p style="text-align: center; font-size: 1.2rem; word-break: break-all;"><strong>URL:</strong> {WEBSITE_LINK}</p>', unsafe_allow_html=True)
+    
+    # Website button in the center
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if st.button("🚀 Visit My Application", use_container_width=True, type="primary", key="visit_website"):
+            open_website()
+    
+    st.markdown('<p style="text-align: center; margin-top: 20px; color: #666;">Click the button above to visit my Rag Chat application</p>', unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+# Divider
+st.divider()
 
 # Development Status Section
 st.markdown('<h2 style="text-align: center;">🚀 Application Status</h2>', unsafe_allow_html=True)
@@ -251,16 +329,16 @@ st.markdown('<h2 style="text-align: center;">🚀 Application Status</h2>', unsa
 with st.container():
     st.markdown('<div class="development-box">', unsafe_allow_html=True)
     st.markdown('<div class="construction-icon">🚧</div>', unsafe_allow_html=True)
-    st.markdown(f'<h3 style="text-align: center; color: #ff9800;">{WEBSITE_NAME} - Under Development</h3>', unsafe_allow_html=True)
+    st.markdown(f'<h3 style="text-align: center; color: #ff9800;">{WEBSITE_NAME} - Active Development</h3>', unsafe_allow_html=True)
     st.markdown('<p style="text-align: center; font-size: 1.2rem;">This application is currently in active development phase.</p>', unsafe_allow_html=True)
     st.markdown('<p style="text-align: center; font-size: 1.1rem; color: #666;">Your feedback is valuable for improving the app!</p>', unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Progress bar for development
 st.write("**Development Progress:**")
-progress_value = st.slider("Current progress", 0, 100, 65, disabled=True, label_visibility="collapsed")
+progress_value = st.slider("Current progress", 0, 100, 75, disabled=True, label_visibility="collapsed")
 progress = st.progress(progress_value)
-st.caption(f"Development Status: {progress_value}% complete | Beta Testing Phase")
+st.caption(f"Development Status: {progress_value}% complete | Active Development")
 
 # Divider
 st.divider()
@@ -373,7 +451,7 @@ with st.container():
         - UI/UX problems
         """)
     
-    # Quick email button
+    # Quick email buttons
     col1, col2 = st.columns(2)
     with col1:
         if st.button("📨 Send General Email", use_container_width=True):
@@ -404,6 +482,26 @@ for category, items in test_items.items():
         for item in items:
             st.checkbox(item)
 
+# Website copy section
+st.markdown("---")
+st.markdown("### 🔗 Quick Website Access")
+
+col1, col2, col3 = st.columns(3)
+with col1:
+    if st.button("📋 Copy Website URL", use_container_width=True):
+        st.code(WEBSITE_LINK)
+        st.success("Website URL copied to clipboard!")
+        
+with col2:
+    if st.button("🌐 Open in New Tab", use_container_width=True):
+        js_code = f"""<script>window.open('{WEBSITE_LINK}', '_blank');</script>"""
+        st.components.v1.html(js_code, height=0)
+        st.success("Opening website in new tab...")
+        
+with col3:
+    if st.button("🚀 Visit Website Again", use_container_width=True):
+        open_website()
+
 # Footer
 st.markdown("---")
 current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -411,7 +509,8 @@ st.markdown(f"""
 <div style="text-align: center; color: #666; padding: 20px;">
     <p>© {datetime.now().year} | Created by {YOUR_NAME}</p>
     <p style="font-size: 0.9rem;">Last updated: {current_time}</p>
-    <p style="font-size: 0.8rem; color: #888;">Status: Under Development 🚧 | Version: Beta 1.0</p>
+    <p style="font-size: 0.8rem; color: #888;">Status: Active Development 🚧 | Version: 1.0</p>
+    <p style="font-size: 0.8rem; color: #4CAF50;">🌐 Website: <a href="{WEBSITE_LINK}" target="_blank">{WEBSITE_LINK}</a></p>
     <p style="font-size: 0.8rem; color: #FF9800;">⚠️ <strong>Important:</strong> Even if app works, please send email confirmation to {YOUR_EMAIL}</p>
 </div>
 """, unsafe_allow_html=True)
@@ -422,27 +521,25 @@ with st.sidebar:
     st.markdown(f"**App:** {WEBSITE_NAME}")
     st.markdown(f"**Developer:** {YOUR_NAME}")
     st.markdown(f"**Email:** {YOUR_EMAIL}")
-    st.markdown(f"**Status:** Beta Testing")
+    st.markdown(f"**Website:** [Link]({WEBSITE_LINK})")
+    st.markdown(f"**Status:** Active Development")
     
     st.markdown("---")
-    st.markdown("### 📊 Testing Status")
-    st.markdown("""
-    - ✅ App Working: Send confirmation
-    - ⚠️ Issues Found: Report immediately
-    - 💡 Suggestions: Always welcome
-    """)
+    st.markdown("### 📊 Quick Actions")
+    
+    if st.button("🌐 Visit Website", use_container_width=True):
+        open_website()
+    
+    if st.button("📧 Report Success", use_container_width=True):
+        report_app_working()
+    
+    if st.button("⚠️ Report Issue", use_container_width=True):
+        report_issue()
     
     st.markdown("---")
-    st.markdown("### 🔄 Quick Actions")
-    if st.button("🔄 Refresh Page", use_container_width=True):
-        st.rerun()
-    
     st.markdown("""
-    ---
     **Remember:** 
-    Your emails help identify:
-    1. If app works correctly
-    2. What needs fixing
-    3. User experience
-    4. Development progress
+    - Visit website: {WEBSITE_LINK}
+    - Email confirmation helps tracking
+    - Report both success and issues
     """)
