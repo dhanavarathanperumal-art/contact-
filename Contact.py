@@ -79,45 +79,10 @@ st.markdown("""
         border: 3px solid #dc3545;
     }
     
-    /* Social media icons */
-    .social-icon {
-        font-size: 1.5rem;
-        margin-right: 10px;
-    }
-    
-    /* Social media buttons */
-    .social-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: bold;
-        margin: 5px;
-        transition: all 0.3s ease;
-    }
-    
-    .instagram-btn {
-        background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    /* WhatsApp specific styles */
+    .whatsapp-btn {
+        background-color: #25D366;
         color: white;
-    }
-    
-    .github-btn {
-        background-color: #333;
-        color: white;
-    }
-    
-    .email-btn {
-        background-color: #D44638;
-        color: white;
-    }
-    
-    /* Social media container */
-    .social-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin: 20px 0;
     }
     
     /* Button styles */
@@ -127,16 +92,23 @@ st.markdown("""
         font-size: 1.1rem;
         transition: all 0.3s ease;
     }
+    
+    .stButton > button:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
 </style>
 """, unsafe_allow_html=True)
 
 # Your information
 YOUR_NAME = "Dhanavarathan P (Dhana)"
 YOUR_EMAIL = "dhanavarathanperumal@gmail.com"
+YOUR_PHONE = "9500343825"
 WEBSITE_NAME = "Rag Chat"
 WEBSITE_LINK = "https://offline1rag.streamlit.app"
 INSTAGRAM_LINK = "https://www.instagram.com/call._.me._.dhana?igsh=MTFrdnQ1dDV1c3BtdA=="
 GITHUB_LINK = "https://github.com/dhanavarathanperumal-art"
+WHATSAPP_LINK = f"https://wa.me/{YOUR_PHONE}"
 
 # Function to open the website
 def open_website():
@@ -152,6 +124,11 @@ def open_instagram():
 def open_github():
     webbrowser.open(GITHUB_LINK)
     st.success("Opening GitHub profile...")
+
+# Function to open WhatsApp
+def open_whatsapp():
+    webbrowser.open(WHATSAPP_LINK)
+    st.success("Opening WhatsApp...")
 
 # Function for success report email
 def report_app_working():
@@ -335,88 +312,129 @@ st.markdown("---")
 # ============================
 # CONTACT & SOCIAL MEDIA SECTION
 # ============================
-st.markdown("### 📞 Contact & Social Media")
+st.markdown("### 📞 Contact Information")
 
-# Social Media Buttons
-st.markdown("""
-<div style="text-align: center; margin: 20px 0;">
-    <h4>Connect with me on:</h4>
-</div>
-""", unsafe_allow_html=True)
-
-# Social media buttons in columns
-col1, col2, col3, col4 = st.columns(4)
+# Contact cards in columns
+col1, col2 = st.columns(2)
 
 with col1:
-    if st.button("📧 Email", use_container_width=True):
-        webbrowser.open(f"mailto:{YOUR_EMAIL}?subject=Hello {YOUR_NAME}")
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 10px 0;
+        border: 2px solid #2196F3;
+    ">
+        <h5 style="color: #1565c0;">👤 Personal Details</h5>
+        <p style="font-size: 1.2rem; color: #0d47a1;"><strong>{YOUR_NAME}</strong></p>
+    </div>
+    """, unsafe_allow_html=True)
 
 with col2:
-    if st.button("📸 Instagram", use_container_width=True):
-        open_instagram()
-
-with col3:
-    if st.button("💻 GitHub", use_container_width=True):
-        open_github()
-
-with col4:
-    if st.button("🌐 Website", use_container_width=True):
-        open_website()
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        padding: 20px;
+        border-radius: 15px;
+        text-align: center;
+        margin: 10px 0;
+        border: 2px solid #4CAF50;
+    ">
+        <h5 style="color: #2E7D32;">📱 Mobile Number</h5>
+        <p style="font-size: 1.3rem; color: #1B5E20;"><strong>{YOUR_PHONE}</strong></p>
+        <p style="color: #666; font-size: 0.9rem;">For WhatsApp & Calls</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Contact Information Details
 with st.container():
     st.markdown(f"""
     <div style="
-        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
         padding: 25px;
         border-radius: 15px;
         margin: 20px 0;
     ">
-        <h4 style="color: #1565c0; text-align: center;">👤 Contact Details</h4>
+        <h4 style="color: #495057; text-align: center; margin-bottom: 25px;">📱 Contact Channels</h4>
         
         <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
             <!-- Email -->
-            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #D44638;">
-                <span style="font-size: 1.5rem; margin-right: 15px;">📧</span>
-                <div>
-                    <strong style="color: #333;">Email:</strong><br>
-                    <a href="mailto:{YOUR_EMAIL}" style="color: #1a73e8; text-decoration: none;">{YOUR_EMAIL}</a>
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #D44638; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span style="font-size: 1.8rem; margin-right: 20px; color: #D44638;">📧</span>
+                <div style="flex-grow: 1;">
+                    <strong style="color: #333; font-size: 1.1rem;">Email</strong><br>
+                    <span style="color: #666;">{YOUR_EMAIL}</span>
+                </div>
+            </div>
+            
+            <!-- WhatsApp -->
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #25D366; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span style="font-size: 1.8rem; margin-right: 20px; color: #25D366;">💬</span>
+                <div style="flex-grow: 1;">
+                    <strong style="color: #333; font-size: 1.1rem;">WhatsApp / Phone</strong><br>
+                    <span style="color: #666;">{YOUR_PHONE}</span>
                 </div>
             </div>
             
             <!-- Instagram -->
-            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #E1306C;">
-                <span style="font-size: 1.5rem; margin-right: 15px;">📸</span>
-                <div>
-                    <strong style="color: #333;">Instagram:</strong><br>
-                    <a href="{INSTAGRAM_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">@call._.me._.dhana</a>
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #E1306C; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span style="font-size: 1.8rem; margin-right: 20px; color: #E1306C;">📸</span>
+                <div style="flex-grow: 1;">
+                    <strong style="color: #333; font-size: 1.1rem;">Instagram</strong><br>
+                    <span style="color: #666;">@call._.me._.dhana</span>
                 </div>
             </div>
             
             <!-- GitHub -->
-            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #333;">
-                <span style="font-size: 1.5rem; margin-right: 15px;">💻</span>
-                <div>
-                    <strong style="color: #333;">GitHub:</strong><br>
-                    <a href="{GITHUB_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">dhanavarathanperumal-art</a>
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #333; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span style="font-size: 1.8rem; margin-right: 20px; color: #333;">💻</span>
+                <div style="flex-grow: 1;">
+                    <strong style="color: #333; font-size: 1.1rem;">GitHub</strong><br>
+                    <span style="color: #666;">dhanavarathanperumal-art</span>
                 </div>
             </div>
             
             <!-- Website -->
-            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;">
-                <span style="font-size: 1.5rem; margin-right: 15px;">🌐</span>
-                <div>
-                    <strong style="color: #333;">Website:</strong><br>
-                    <a href="{WEBSITE_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">{WEBSITE_LINK}</a>
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                <span style="font-size: 1.8rem; margin-right: 20px; color: #4CAF50;">🌐</span>
+                <div style="flex-grow: 1;">
+                    <strong style="color: #333; font-size: 1.1rem;">Website</strong><br>
+                    <span style="color: #666;">{WEBSITE_LINK}</span>
                 </div>
             </div>
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-# Quick copy buttons
-st.markdown("### 📋 Quick Copy Links")
-copy_col1, copy_col2, copy_col3, copy_col4 = st.columns(4)
+# Quick contact buttons
+st.markdown("### 🚀 Quick Contact Actions")
+contact_col1, contact_col2, contact_col3, contact_col4, contact_col5 = st.columns(5)
+
+with contact_col1:
+    if st.button("📧 Email", use_container_width=True):
+        webbrowser.open(f"mailto:{YOUR_EMAIL}?subject=Hello%20{YOUR_NAME}")
+
+with contact_col2:
+    if st.button("💬 WhatsApp", use_container_width=True):
+        open_whatsapp()
+
+with contact_col3:
+    if st.button("📸 Instagram", use_container_width=True):
+        open_instagram()
+
+with contact_col4:
+    if st.button("💻 GitHub", use_container_width=True):
+        open_github()
+
+with contact_col5:
+    if st.button("🌐 Website", use_container_width=True):
+        open_website()
+
+# Copy buttons
+st.markdown("### 📋 Copy Contact Details")
+copy_col1, copy_col2, copy_col3, copy_col4, copy_col5 = st.columns(5)
 
 with copy_col1:
     if st.button("Copy Email", use_container_width=True):
@@ -424,16 +442,21 @@ with copy_col1:
         st.success("Email copied!")
 
 with copy_col2:
+    if st.button("Copy Phone", use_container_width=True):
+        st.code(YOUR_PHONE)
+        st.success("Phone number copied!")
+
+with copy_col3:
     if st.button("Copy Instagram", use_container_width=True):
         st.code(INSTAGRAM_LINK)
         st.success("Instagram link copied!")
 
-with copy_col3:
+with copy_col4:
     if st.button("Copy GitHub", use_container_width=True):
         st.code(GITHUB_LINK)
         st.success("GitHub link copied!")
 
-with copy_col4:
+with copy_col5:
     if st.button("Copy Website", use_container_width=True):
         st.code(WEBSITE_LINK)
         st.success("Website link copied!")
@@ -508,18 +531,18 @@ with st.expander("Click to expand testing checklist"):
         st.checkbox("No crashes/freezes")
 
 # ============================
-# SOCIAL MEDIA LINKS DISPLAY
+# CONTACT LINKS DISPLAY
 # ============================
 st.markdown("---")
-st.markdown("### 🔗 Quick Social Media Access")
+st.markdown("### 🔗 Quick Access Links")
 
-# Display social media links with icons
+# Display contact links with icons
 st.markdown(f"""
 <div style="
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 10px;
     margin: 20px 0;
 ">
     <a href="mailto:{YOUR_EMAIL}" style="
@@ -527,12 +550,27 @@ st.markdown(f"""
         align-items: center;
         background-color: #D44638;
         color: white;
-        padding: 12px 20px;
+        padding: 10px 18px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: bold;
+        font-size: 0.9rem;
     ">
-        📧 Email Me
+        📧 Email
+    </a>
+    
+    <a href="{WHATSAPP_LINK}" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        background-color: #25D366;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+    ">
+        💬 WhatsApp
     </a>
     
     <a href="{INSTAGRAM_LINK}" target="_blank" style="
@@ -540,10 +578,11 @@ st.markdown(f"""
         align-items: center;
         background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         color: white;
-        padding: 12px 20px;
+        padding: 10px 18px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: bold;
+        font-size: 0.9rem;
     ">
         📸 Instagram
     </a>
@@ -553,10 +592,11 @@ st.markdown(f"""
         align-items: center;
         background-color: #333;
         color: white;
-        padding: 12px 20px;
+        padding: 10px 18px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: bold;
+        font-size: 0.9rem;
     ">
         💻 GitHub
     </a>
@@ -566,12 +606,13 @@ st.markdown(f"""
         align-items: center;
         background-color: #4CAF50;
         color: white;
-        padding: 12px 20px;
+        padding: 10px 18px;
         border-radius: 8px;
         text-decoration: none;
         font-weight: bold;
+        font-size: 0.9rem;
     ">
-        🌐 My App
+        🌐 Website
     </a>
 </div>
 """, unsafe_allow_html=True)
@@ -594,10 +635,11 @@ st.markdown(f"""
     <p>© {datetime.now().year} | Created by {YOUR_NAME}</p>
     <p style="font-size: 0.9rem;">Last updated: {current_time}</p>
     
-    <div style="display: flex; justify-content: center; gap: 20px; margin: 15px 0;">
+    <div style="display: flex; justify-content: center; gap: 15px; margin: 15px 0; flex-wrap: wrap;">
+        <span style="color: #D44638;">📧 {YOUR_EMAIL}</span>
+        <span style="color: #25D366;">💬 {YOUR_PHONE}</span>
         <a href="{INSTAGRAM_LINK}" target="_blank" style="color: #E1306C; text-decoration: none;">📸 Instagram</a>
         <a href="{GITHUB_LINK}" target="_blank" style="color: #333; text-decoration: none;">💻 GitHub</a>
-        <a href="mailto:{YOUR_EMAIL}" style="color: #D44638; text-decoration: none;">📧 Email</a>
         <a href="{WEBSITE_LINK}" target="_blank" style="color: #4CAF50; text-decoration: none;">🌐 Website</a>
     </div>
     
@@ -613,15 +655,22 @@ st.markdown(f"""
 with st.sidebar:
     st.markdown("### ℹ️ Quick Info")
     st.info(f"""
-    **App:** {WEBSITE_NAME}
-    **Developer:** {YOUR_NAME}
+    **Name:** {YOUR_NAME}
     **Email:** {YOUR_EMAIL}
+    **Phone:** {YOUR_PHONE}
+    **App:** {WEBSITE_NAME}
     **Status:** Active Development
     """)
     
     st.markdown("---")
     
-    st.markdown("### 🔗 Quick Links")
+    st.markdown("### 📞 Quick Contact")
+    if st.button("📧 Send Email", use_container_width=True):
+        webbrowser.open(f"mailto:{YOUR_EMAIL}?subject=Hello%20{YOUR_NAME}")
+    
+    if st.button("💬 WhatsApp", use_container_width=True):
+        open_whatsapp()
+    
     if st.button("📸 Instagram", use_container_width=True):
         open_instagram()
     
