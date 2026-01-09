@@ -79,13 +79,45 @@ st.markdown("""
         border: 3px solid #dc3545;
     }
     
-    /* Email purpose boxes */
-    .email-purpose-box {
-        padding: 15px;
+    /* Social media icons */
+    .social-icon {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    
+    /* Social media buttons */
+    .social-btn {
+        display: inline-block;
+        padding: 10px 20px;
         border-radius: 8px;
-        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        margin: 5px;
+        transition: all 0.3s ease;
+    }
+    
+    .instagram-btn {
+        background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        color: white;
+    }
+    
+    .github-btn {
+        background-color: #333;
+        color: white;
+    }
+    
+    .email-btn {
+        background-color: #D44638;
+        color: white;
+    }
+    
+    /* Social media container */
+    .social-container {
         display: flex;
-        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 20px 0;
     }
     
     /* Button styles */
@@ -95,38 +127,6 @@ st.markdown("""
         font-size: 1.1rem;
         transition: all 0.3s ease;
     }
-    
-    /* Custom colors for buttons */
-    .success-btn {
-        background-color: #28a745 !important;
-        color: white !important;
-        border: none !important;
-    }
-    
-    .warning-btn {
-        background-color: #ffc107 !important;
-        color: black !important;
-        border: none !important;
-    }
-    
-    .danger-btn {
-        background-color: #dc3545 !important;
-        color: white !important;
-        border: none !important;
-    }
-    
-    .info-btn {
-        background-color: #17a2b8 !important;
-        color: white !important;
-        border: none !important;
-    }
-    
-    /* Custom checkbox styling */
-    .stCheckbox > div > div {
-        background-color: white;
-        border-radius: 5px;
-        padding: 5px;
-    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -135,11 +135,23 @@ YOUR_NAME = "Dhanavarathan P (Dhana)"
 YOUR_EMAIL = "dhanavarathanperumal@gmail.com"
 WEBSITE_NAME = "Rag Chat"
 WEBSITE_LINK = "https://offline1rag.streamlit.app"
+INSTAGRAM_LINK = "https://www.instagram.com/call._.me._.dhana?igsh=MTFrdnQ1dDV1c3BtdA=="
+GITHUB_LINK = "https://github.com/dhanavarathanperumal-art"
 
 # Function to open the website
 def open_website():
     webbrowser.open(WEBSITE_LINK)
     st.success(f"Opening {WEBSITE_NAME}...")
+
+# Function to open Instagram
+def open_instagram():
+    webbrowser.open(INSTAGRAM_LINK)
+    st.success("Opening Instagram profile...")
+
+# Function to open GitHub
+def open_github():
+    webbrowser.open(GITHUB_LINK)
+    st.success("Opening GitHub profile...")
 
 # Function for success report email
 def report_app_working():
@@ -321,6 +333,114 @@ with st.container():
 st.markdown("---")
 
 # ============================
+# CONTACT & SOCIAL MEDIA SECTION
+# ============================
+st.markdown("### 📞 Contact & Social Media")
+
+# Social Media Buttons
+st.markdown("""
+<div style="text-align: center; margin: 20px 0;">
+    <h4>Connect with me on:</h4>
+</div>
+""", unsafe_allow_html=True)
+
+# Social media buttons in columns
+col1, col2, col3, col4 = st.columns(4)
+
+with col1:
+    if st.button("📧 Email", use_container_width=True):
+        webbrowser.open(f"mailto:{YOUR_EMAIL}?subject=Hello {YOUR_NAME}")
+
+with col2:
+    if st.button("📸 Instagram", use_container_width=True):
+        open_instagram()
+
+with col3:
+    if st.button("💻 GitHub", use_container_width=True):
+        open_github()
+
+with col4:
+    if st.button("🌐 Website", use_container_width=True):
+        open_website()
+
+# Contact Information Details
+with st.container():
+    st.markdown(f"""
+    <div style="
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        padding: 25px;
+        border-radius: 15px;
+        margin: 20px 0;
+    ">
+        <h4 style="color: #1565c0; text-align: center;">👤 Contact Details</h4>
+        
+        <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
+            <!-- Email -->
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #D44638;">
+                <span style="font-size: 1.5rem; margin-right: 15px;">📧</span>
+                <div>
+                    <strong style="color: #333;">Email:</strong><br>
+                    <a href="mailto:{YOUR_EMAIL}" style="color: #1a73e8; text-decoration: none;">{YOUR_EMAIL}</a>
+                </div>
+            </div>
+            
+            <!-- Instagram -->
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #E1306C;">
+                <span style="font-size: 1.5rem; margin-right: 15px;">📸</span>
+                <div>
+                    <strong style="color: #333;">Instagram:</strong><br>
+                    <a href="{INSTAGRAM_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">@call._.me._.dhana</a>
+                </div>
+            </div>
+            
+            <!-- GitHub -->
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #333;">
+                <span style="font-size: 1.5rem; margin-right: 15px;">💻</span>
+                <div>
+                    <strong style="color: #333;">GitHub:</strong><br>
+                    <a href="{GITHUB_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">dhanavarathanperumal-art</a>
+                </div>
+            </div>
+            
+            <!-- Website -->
+            <div style="display: flex; align-items: center; background-color: white; padding: 15px; border-radius: 10px; border-left: 5px solid #4CAF50;">
+                <span style="font-size: 1.5rem; margin-right: 15px;">🌐</span>
+                <div>
+                    <strong style="color: #333;">Website:</strong><br>
+                    <a href="{WEBSITE_LINK}" target="_blank" style="color: #1a73e8; text-decoration: none;">{WEBSITE_LINK}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Quick copy buttons
+st.markdown("### 📋 Quick Copy Links")
+copy_col1, copy_col2, copy_col3, copy_col4 = st.columns(4)
+
+with copy_col1:
+    if st.button("Copy Email", use_container_width=True):
+        st.code(YOUR_EMAIL)
+        st.success("Email copied!")
+
+with copy_col2:
+    if st.button("Copy Instagram", use_container_width=True):
+        st.code(INSTAGRAM_LINK)
+        st.success("Instagram link copied!")
+
+with copy_col3:
+    if st.button("Copy GitHub", use_container_width=True):
+        st.code(GITHUB_LINK)
+        st.success("GitHub link copied!")
+
+with copy_col4:
+    if st.button("Copy Website", use_container_width=True):
+        st.code(WEBSITE_LINK)
+        st.success("Website link copied!")
+
+st.markdown("---")
+
+# ============================
 # EMAIL ACTION BUTTONS SECTION
 # ============================
 st.markdown("### 📧 Send Email Reports")
@@ -365,41 +485,6 @@ with col2:
 st.markdown("---")
 
 # ============================
-# CONTACT INFORMATION SECTION
-# ============================
-st.markdown("### 📞 Contact Information")
-
-with st.container():
-    st.markdown(f"""
-    <div style="
-        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-        padding: 25px;
-        border-radius: 15px;
-        text-align: center;
-        margin: 20px 0;
-    ">
-        <h4 style="color: #1565c0;">👤 {YOUR_NAME}</h4>
-        <p style="font-size: 1.3rem; color: #0d47a1;">📧 {YOUR_EMAIL}</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Quick action buttons
-    st.markdown("#### Quick Actions:")
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("📨 Send General Email", use_container_width=True):
-            webbrowser.open(f"mailto:{YOUR_EMAIL}?subject=General Inquiry - {WEBSITE_NAME}&body=Hi {YOUR_NAME},")
-            st.success("Email client opened!")
-    
-    with col2:
-        if st.button("📋 Copy Email Address", use_container_width=True):
-            st.code(YOUR_EMAIL)
-            st.success("Email copied!")
-
-st.markdown("---")
-
-# ============================
 # TESTING CHECKLIST SECTION
 # ============================
 st.markdown("### 📝 Quick Checklist")
@@ -422,27 +507,74 @@ with st.expander("Click to expand testing checklist"):
         st.checkbox("Mobile responsive")
         st.checkbox("No crashes/freezes")
 
+# ============================
+# SOCIAL MEDIA LINKS DISPLAY
+# ============================
 st.markdown("---")
+st.markdown("### 🔗 Quick Social Media Access")
 
-# ============================
-# WEBSITE QUICK ACCESS
-# ============================
-st.markdown("### 🔗 Quick Website Access")
-
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    if st.button("📋 Copy URL", use_container_width=True):
-        st.code(WEBSITE_LINK)
-        st.success("Copied to clipboard!")
-
-with col2:
-    if st.button("🌐 Open Website", use_container_width=True):
-        open_website()
-
-with col3:
-    if st.button("🔄 Test Again", use_container_width=True):
-        st.rerun()
+# Display social media links with icons
+st.markdown(f"""
+<div style="
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px 0;
+">
+    <a href="mailto:{YOUR_EMAIL}" style="
+        display: inline-flex;
+        align-items: center;
+        background-color: #D44638;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    ">
+        📧 Email Me
+    </a>
+    
+    <a href="{INSTAGRAM_LINK}" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    ">
+        📸 Instagram
+    </a>
+    
+    <a href="{GITHUB_LINK}" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        background-color: #333;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    ">
+        💻 GitHub
+    </a>
+    
+    <a href="{WEBSITE_LINK}" target="_blank" style="
+        display: inline-flex;
+        align-items: center;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+    ">
+        🌐 My App
+    </a>
+</div>
+""", unsafe_allow_html=True)
 
 # ============================
 # FOOTER SECTION
@@ -461,6 +593,14 @@ st.markdown(f"""
 ">
     <p>© {datetime.now().year} | Created by {YOUR_NAME}</p>
     <p style="font-size: 0.9rem;">Last updated: {current_time}</p>
+    
+    <div style="display: flex; justify-content: center; gap: 20px; margin: 15px 0;">
+        <a href="{INSTAGRAM_LINK}" target="_blank" style="color: #E1306C; text-decoration: none;">📸 Instagram</a>
+        <a href="{GITHUB_LINK}" target="_blank" style="color: #333; text-decoration: none;">💻 GitHub</a>
+        <a href="mailto:{YOUR_EMAIL}" style="color: #D44638; text-decoration: none;">📧 Email</a>
+        <a href="{WEBSITE_LINK}" target="_blank" style="color: #4CAF50; text-decoration: none;">🌐 Website</a>
+    </div>
+    
     <p style="font-size: 0.8rem; color: #ff9800;">
         ⚠️ <strong>Important:</strong> Even if app works, please send email confirmation to {YOUR_EMAIL}
     </p>
@@ -481,11 +621,20 @@ with st.sidebar:
     
     st.markdown("---")
     
-    st.markdown("### 🚀 Quick Actions")
-    if st.button("🌐 Visit Website", use_container_width=True):
+    st.markdown("### 🔗 Quick Links")
+    if st.button("📸 Instagram", use_container_width=True):
+        open_instagram()
+    
+    if st.button("💻 GitHub", use_container_width=True):
+        open_github()
+    
+    if st.button("🌐 Website", use_container_width=True):
         open_website()
     
-    if st.button("📧 Success Report", use_container_width=True):
+    st.markdown("---")
+    
+    st.markdown("### 📧 Email Actions")
+    if st.button("✅ Success Report", use_container_width=True):
         report_app_working()
     
     if st.button("⚠️ Issue Report", use_container_width=True):
